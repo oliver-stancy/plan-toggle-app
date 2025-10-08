@@ -67,13 +67,10 @@ const Index = () => {
           </div>
           
           <div className="flex items-center gap-2">
-            <Button variant="outline" className="gap-2">
+            <Button variant="outline" className="gap-2" onClick={() => setIsLoginOpen(true)}>
               <CheckCircle className="h-4 w-4" />
               <span className="hidden sm:inline">Already have a package</span>
               <span className="sm:hidden">My Package</span>
-            </Button>
-            <Button variant="outline" size="icon" onClick={() => setIsLoginOpen(true)}>
-              <LogIn className="h-5 w-5" />
             </Button>
             <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
               <LogOut className="h-5 w-5" />
