@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Wifi, LogOut, CheckCircle } from "lucide-react";
+import { Wifi, LogOut, CheckCircle, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import PricingCard from "@/components/PricingCard";
 import PaymentDialog from "@/components/PaymentDialog";
+import LoginDialog from "@/components/LoginDialog";
 
 const Index = () => {
   const [isUnlimited, setIsUnlimited] = useState(true);
@@ -12,6 +13,7 @@ const Index = () => {
     name: string;
     price: number;
   } | null>(null);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   const unlimitedPackages = [
     { duration: "1 Hour", price: 10, description: "1 Hrs Unlimited" },
@@ -64,11 +66,14 @@ const Index = () => {
             <span className="text-xl font-bold text-foreground">Neton</span>
           </div>
           
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
             <Button variant="outline" className="gap-2">
               <CheckCircle className="h-4 w-4" />
               <span className="hidden sm:inline">Already have a package</span>
               <span className="sm:hidden">My Package</span>
+            </Button>
+            <Button variant="outline" size="icon" onClick={() => setIsLoginOpen(true)}>
+              <LogIn className="h-5 w-5" />
             </Button>
             <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
               <LogOut className="h-5 w-5" />
@@ -139,6 +144,12 @@ const Index = () => {
         onOpenChange={(open) => !open && setSelectedPackage(null)}
         packageName={selectedPackage?.name || ""}
         price={selectedPackage?.price || 0}
+      />
+
+      {/* Login Dialog */}
+      <LoginDialog
+        open={isLoginOpen}
+        onOpenChange={setIsLoginOpen}
       />
     </div>
   );
