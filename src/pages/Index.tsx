@@ -1,11 +1,18 @@
 import { useState } from "react";
-import { Wifi, CheckCircle, Signal, Shield, Zap, CreditCard } from "lucide-react";
+import { Wifi, CheckCircle, Signal, Shield, Zap, CreditCard, Rocket, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import PricingCard from "@/components/PricingCard";
 import PaymentDialog from "@/components/PaymentDialog";
 import LoginDialog from "@/components/LoginDialog";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const Index = () => {
   const [isUnlimited, setIsUnlimited] = useState(false);
@@ -79,12 +86,16 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-hero overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-1/4 left-1/4 animate-pulse">
-            <Signal className="h-24 w-24 text-primary" />
-          </div>
-          <div className="absolute bottom-1/3 right-1/4 animate-pulse" style={{ animationDelay: '1s' }}>
-            <Signal className="h-32 w-32 text-primary" />
+        {/* Rocket Animation */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/4 right-1/4 rocket-animation">
+            <Rocket className="h-24 w-24 text-primary opacity-20" />
+            {/* Speed Lines */}
+            <div className="absolute top-1/2 right-full w-20 space-y-2">
+              <div className="h-1 bg-primary/20 rounded-full speed-lines" style={{ animationDelay: '0s' }} />
+              <div className="h-1 bg-primary/15 rounded-full speed-lines" style={{ animationDelay: '0.2s' }} />
+              <div className="h-1 bg-primary/10 rounded-full speed-lines" style={{ animationDelay: '0.4s' }} />
+            </div>
           </div>
         </div>
         
@@ -92,8 +103,11 @@ const Index = () => {
           <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl animate-fade-in">
             Fast & Reliable WiFi On-Demand
           </h1>
-          <p className="mx-auto max-w-2xl mb-8 text-lg text-muted-foreground md:text-xl animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <p className="mx-auto max-w-2xl mb-4 text-lg text-muted-foreground md:text-xl animate-fade-in" style={{ animationDelay: '0.2s' }}>
             Connect instantly with flexible plans starting from KSH 5. No contracts, just seamless internet.
+          </p>
+          <p className="mx-auto max-w-3xl mb-8 text-base text-muted-foreground animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            Experience lightning-fast speeds and reliable connectivity tailored to your needs. Whether you're browsing, streaming, or working on the go, Silver WiFi keeps you connected without the hassle.
           </p>
           <Button 
             size="lg" 
@@ -187,19 +201,67 @@ const Index = () => {
           </div>
 
           {/* Pricing Grid */}
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center">
             {currentPackages.map((pkg, index) => (
-              <PricingCard
-                key={`${pkg.duration}-${pkg.price}-${index}`}
-                duration={pkg.duration}
-                price={pkg.price}
-                description={pkg.description}
-                isUnlimited={isUnlimited}
-                onConnect={() => handleConnect(pkg)}
-                delay={index * 0.05}
-              />
+              <div key={`${pkg.duration}-${pkg.price}-${index}`} className="w-full max-w-[250px]">
+                <PricingCard
+                  duration={pkg.duration}
+                  price={pkg.price}
+                  description={pkg.description}
+                  isUnlimited={isUnlimited}
+                  onConnect={() => handleConnect(pkg)}
+                  delay={index * 0.05}
+                />
+              </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* User Reviews Section */}
+      <section className="py-16 md:py-24 bg-muted/30">
+        <div className="container mx-auto max-w-7xl px-4 md:px-6">
+          <h2 className="mb-12 text-center text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+            What Our Users Say
+          </h2>
+          
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="mx-auto max-w-5xl"
+          >
+            <CarouselContent>
+              {[
+                { quote: "Super fast and affordable! Silver WiFi has been a game changer for my daily browsing needs.", name: "John D.", rating: 5 },
+                { quote: "Reliable connection everywhere I go. The payment process is so simple with M-Pesa!", name: "Sarah K.", rating: 5 },
+                { quote: "Best WiFi service I've used. No hidden fees and excellent speeds for streaming.", name: "Michael O.", rating: 5 },
+                { quote: "Lightning-fast internet at great prices. Highly recommend for anyone on the go!", name: "Grace M.", rating: 4 },
+                { quote: "Seamless connectivity and instant activation. Silver WiFi never disappoints!", name: "David N.", rating: 5 },
+              ].map((review, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1">
+                    <div className="flex flex-col gap-4 rounded-lg border border-border bg-card p-6 shadow-card transition-all duration-300 hover:shadow-card-hover h-full">
+                      <div className="flex gap-1">
+                        {Array.from({ length: review.rating }).map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                        ))}
+                      </div>
+                      <p className="text-sm text-muted-foreground italic flex-grow">
+                        "{review.quote}"
+                      </p>
+                      <p className="text-sm font-semibold text-foreground">
+                        – {review.name}
+                      </p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
+          </Carousel>
         </div>
       </section>
 

@@ -42,7 +42,7 @@ All colors MUST be HSL.
     
     --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
     --gradient-card: linear-gradient(135deg, hsl(217 91% 60% / 0.1), hsl(217 91% 70% / 0.05));
-    --gradient-hero: linear-gradient(180deg, hsl(210 40% 98%), hsl(214 32% 91% / 0.5));
+    --gradient-hero: linear-gradient(180deg, hsl(210 100% 95%), hsl(0 0% 100%));
     --shadow-card: 0 4px 20px -2px hsl(217 91% 60% / 0.15);
     --shadow-hover: 0 8px 30px -4px hsl(217 91% 60% / 0.25);
 
@@ -89,7 +89,7 @@ All colors MUST be HSL.
     
     --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
     --gradient-card: linear-gradient(135deg, hsl(217 91% 60% / 0.2), hsl(217 91% 70% / 0.1));
-    --gradient-hero: linear-gradient(180deg, hsl(222 47% 11%), hsl(217 33% 18% / 0.5));
+    --gradient-hero: linear-gradient(180deg, hsl(210 80% 20%), hsl(222 47% 11%));
     --shadow-card: 0 4px 20px -2px hsl(217 91% 60% / 0.3);
     --shadow-hover: 0 8px 30px -4px hsl(217 91% 60% / 0.4);
     
@@ -111,5 +111,33 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  @keyframes rocket-float {
+    0%, 100% {
+      transform: translateY(0) translateX(0) rotate(-10deg);
+    }
+    50% {
+      transform: translateY(-30px) translateX(10px) rotate(-5deg);
+    }
+  }
+
+  @keyframes speed-line {
+    0% {
+      transform: translateX(0) scaleX(1);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateX(-100px) scaleX(0.5);
+      opacity: 0;
+    }
+  }
+
+  .rocket-animation {
+    animation: rocket-float 3s ease-in-out infinite;
+  }
+
+  .speed-lines {
+    animation: speed-line 0.8s ease-out infinite;
   }
 }

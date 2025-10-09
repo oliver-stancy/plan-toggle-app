@@ -21,7 +21,7 @@ const PricingCard = ({
 }: PricingCardProps) => {
   return (
     <Card
-      className="group relative overflow-hidden border-border bg-card p-6 shadow-card transition-all duration-300 hover:shadow-card-hover animate-fade-in"
+      className="group relative overflow-hidden border-border bg-card p-5 shadow-card transition-all duration-300 hover:shadow-card-hover animate-fade-in"
       style={{ animationDelay: `${delay}s` }}
     >
       {/* Gradient Background */}
@@ -35,12 +35,12 @@ const PricingCard = ({
 
         {/* Price */}
         <div className="mb-2 flex items-baseline gap-1">
-          <span className="text-sm font-medium text-muted-foreground">ksh</span>
-          <span className="text-4xl font-bold text-foreground">{price}</span>
+          <span className="text-xs font-medium text-muted-foreground">ksh</span>
+          <span className="text-3xl font-bold text-foreground">{price}</span>
         </div>
 
         {/* Description */}
-        <p className="mb-6 text-sm text-muted-foreground">{description}</p>
+        <p className="mb-5 text-xs text-muted-foreground">{description}</p>
 
         {/* Connect Button */}
         <Button
