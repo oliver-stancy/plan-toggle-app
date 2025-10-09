@@ -12,20 +12,15 @@ interface LoginDialogProps {
 }
 
 const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!email || !password) {
+    if (!username || !password) {
       toast.error("Please fill in all fields");
-      return;
-    }
-
-    if (!email.includes("@")) {
-      toast.error("Please enter a valid email address");
       return;
     }
 
@@ -34,8 +29,8 @@ const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
     // Simulate login process
     setTimeout(() => {
       setIsLoading(false);
-      toast.success("Login successful!");
-      setEmail("");
+      toast.success("Logged in successfully!");
+      setUsername("");
       setPassword("");
       onOpenChange(false);
     }, 1500);
@@ -50,18 +45,18 @@ const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
             Login to Your Account
           </DialogTitle>
           <DialogDescription>
-            Enter your credentials to access your account
+            Enter your username and password to access your package details
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 py-4">
           <div className="space-y-2">
-            <Label htmlFor="email">Email Address</Label>
+            <Label htmlFor="username">Username</Label>
             <Input
-              id="email"
-              type="email"
-              placeholder="your.email@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              id="username"
+              type="text"
+              placeholder="e.g., ABC123"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
           </div>
