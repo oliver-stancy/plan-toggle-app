@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Wifi, CheckCircle, Signal, Shield, Zap, CreditCard, Rocket, Star } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
@@ -77,10 +78,15 @@ const Index = () => {
             <span className="text-xl font-bold text-foreground">Silver</span>
           </div>
           
-          <Button variant="outline" className="gap-2" onClick={() => setIsLoginOpen(true)}>
-            <CheckCircle className="h-4 w-4" />
-            <span>Already have a package?</span>
-          </Button>
+          <div className="flex items-center gap-4">
+            <Link to="/contact">
+              <Button variant="ghost">Contact</Button>
+            </Link>
+            <Button variant="outline" className="gap-2" onClick={() => setIsLoginOpen(true)}>
+              <CheckCircle className="h-4 w-4" />
+              <span>Already have a package?</span>
+            </Button>
+          </div>
         </div>
       </header>
 
