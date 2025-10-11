@@ -92,34 +92,40 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-hero overflow-hidden">
-        {/* Rocket Animation */}
-        <div className="absolute inset-0 pointer-events-none">
+        {/* Enhanced Rocket Animation */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-1/4 right-1/4 rocket-animation">
-            <Rocket className="h-24 w-24 text-primary opacity-20" />
+            <Rocket className="h-32 w-32 text-primary" />
             {/* Speed Lines */}
-            <div className="absolute top-1/2 right-full w-20 space-y-2">
-              <div className="h-1 bg-primary/20 rounded-full speed-lines" style={{ animationDelay: '0s' }} />
-              <div className="h-1 bg-primary/15 rounded-full speed-lines" style={{ animationDelay: '0.2s' }} />
-              <div className="h-1 bg-primary/10 rounded-full speed-lines" style={{ animationDelay: '0.4s' }} />
+            <div className="absolute top-1/2 right-full w-32 space-y-3">
+              <div className="h-1.5 bg-primary/40 rounded-full speed-lines" style={{ animationDelay: '0s' }} />
+              <div className="h-1.5 bg-primary/30 rounded-full speed-lines" style={{ animationDelay: '0.15s' }} />
+              <div className="h-1 bg-primary/25 rounded-full speed-lines" style={{ animationDelay: '0.3s' }} />
+              <div className="h-1 bg-primary/20 rounded-full speed-lines" style={{ animationDelay: '0.45s' }} />
             </div>
+          </div>
+          {/* Additional floating elements */}
+          <div className="absolute top-1/3 left-1/4 rocket-animation" style={{ animationDelay: '1s', animationDuration: '4s' }}>
+            <Signal className="h-20 w-20 text-primary/30" />
+          </div>
+          <div className="absolute bottom-1/4 right-1/3 rocket-animation" style={{ animationDelay: '2s', animationDuration: '5s' }}>
+            <Zap className="h-24 w-24 text-primary/25" />
           </div>
         </div>
         
         <div className="container mx-auto max-w-7xl px-4 text-center relative z-10">
           <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl animate-fade-in">
-            Fast & Reliable WiFi On-Demand
+            Fast WiFi On-Demand
           </h1>
-          <p className="mx-auto max-w-2xl mb-4 text-lg text-muted-foreground md:text-xl animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            Connect instantly with flexible plans starting from KSH 5. No contracts, just seamless internet.
-          </p>
-          <p className="mx-auto max-w-3xl mb-8 text-base text-muted-foreground animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            Experience lightning-fast speeds and reliable connectivity tailored to your needs. Whether you're browsing, streaming, or working on the go, Silver WiFi keeps you connected without the hassle.
+          <p className="mx-auto max-w-2xl mb-8 text-base md:text-lg text-muted-foreground animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <span className="hidden md:inline">Connect instantly with flexible plans from KSH 5. No contracts, just seamless internet.</span>
+            <span className="md:hidden">Flexible plans from KSH 5. No contracts.</span>
           </p>
           <Button 
             size="lg" 
             onClick={scrollToPricing}
             className="animate-scale-in shadow-lg hover:shadow-xl transition-all"
-            style={{ animationDelay: '0.4s' }}
+            style={{ animationDelay: '0.3s' }}
           >
             Get Started
           </Button>

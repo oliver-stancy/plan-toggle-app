@@ -42,7 +42,7 @@ All colors MUST be HSL.
     
     --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
     --gradient-card: linear-gradient(135deg, hsl(217 91% 60% / 0.1), hsl(217 91% 70% / 0.05));
-    --gradient-hero: linear-gradient(180deg, hsl(210 100% 95%), hsl(0 0% 100%));
+    --gradient-hero: linear-gradient(135deg, hsl(210 100% 96%), hsl(217 91% 92%), hsl(210 100% 98%));
     --shadow-card: 0 4px 20px -2px hsl(217 91% 60% / 0.15);
     --shadow-hover: 0 8px 30px -4px hsl(217 91% 60% / 0.25);
 
@@ -89,7 +89,7 @@ All colors MUST be HSL.
     
     --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
     --gradient-card: linear-gradient(135deg, hsl(217 91% 60% / 0.2), hsl(217 91% 70% / 0.1));
-    --gradient-hero: linear-gradient(180deg, hsl(210 80% 20%), hsl(222 47% 11%));
+    --gradient-hero: linear-gradient(135deg, hsl(217 50% 18%), hsl(217 91% 25%), hsl(220 40% 15%));
     --shadow-card: 0 4px 20px -2px hsl(217 91% 60% / 0.3);
     --shadow-hover: 0 8px 30px -4px hsl(217 91% 60% / 0.4);
     
@@ -115,21 +115,41 @@ All colors MUST be HSL.
 
   @keyframes rocket-float {
     0%, 100% {
-      transform: translateY(0) translateX(0) rotate(-10deg);
+      transform: translateY(0) translateX(0) rotate(-15deg) scale(1);
+      opacity: 0.4;
     }
     50% {
-      transform: translateY(-30px) translateX(10px) rotate(-5deg);
+      transform: translateY(-50px) translateX(30px) rotate(-8deg) scale(1.1);
+      opacity: 0.6;
     }
   }
 
   @keyframes speed-line {
     0% {
       transform: translateX(0) scaleX(1);
-      opacity: 0.5;
+      opacity: 0.7;
     }
     100% {
-      transform: translateX(-100px) scaleX(0.5);
+      transform: translateX(-150px) scaleX(0.3);
       opacity: 0;
+    }
+  }
+
+  @keyframes icon-bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 15px hsl(var(--primary) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 30px hsl(var(--primary) / 0.6);
     }
   }
 
@@ -138,6 +158,14 @@ All colors MUST be HSL.
   }
 
   .speed-lines {
-    animation: speed-line 0.8s ease-out infinite;
+    animation: speed-line 0.6s ease-out infinite;
+  }
+
+  .icon-bounce-hover:hover {
+    animation: icon-bounce 0.6s ease-in-out;
+  }
+
+  .glow-hover:hover {
+    animation: glow-pulse 1.5s ease-in-out infinite;
   }
 }

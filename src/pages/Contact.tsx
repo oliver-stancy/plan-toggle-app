@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Phone, MessageCircle, Wifi } from "lucide-react";
+import { Mail, Phone, MessageCircle, Wifi, Twitter, Linkedin, Instagram, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -70,30 +70,113 @@ const Contact = () => {
             </p>
           </div>
 
-          {/* Contact Cards */}
-          <div className="mb-12 grid gap-6 md:grid-cols-3">
-            <div className="flex flex-col items-center rounded-lg border border-border bg-card p-6 text-center shadow-card transition-all hover:shadow-card-hover">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                <Mail className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="mb-2 font-semibold text-foreground">Email Us</h3>
-              <p className="text-sm text-muted-foreground">support@wifibilling.com</p>
+          {/* Contact Methods - Compact Icons */}
+          <div className="mb-12 flex flex-col items-center gap-8">
+            <div className="flex flex-wrap justify-center gap-6">
+              {/* Email */}
+              <a 
+                href="mailto:support@wifibilling.com"
+                className="group relative flex flex-col items-center gap-2"
+              >
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 glow-hover icon-bounce-hover">
+                  <Mail className="h-7 w-7 text-primary transition-colors group-hover:text-primary-foreground" />
+                </div>
+                <span className="text-xs font-medium text-muted-foreground transition-all duration-300 group-hover:text-foreground group-hover:scale-105">Email</span>
+                {/* Tooltip */}
+                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-popover px-3 py-1 text-xs text-popover-foreground opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+                  support@wifibilling.com
+                </span>
+              </a>
+
+              {/* Phone */}
+              <a 
+                href="tel:+15551234567"
+                className="group relative flex flex-col items-center gap-2"
+              >
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 glow-hover icon-bounce-hover">
+                  <Phone className="h-7 w-7 text-primary transition-colors group-hover:text-primary-foreground" />
+                </div>
+                <span className="text-xs font-medium text-muted-foreground transition-all duration-300 group-hover:text-foreground group-hover:scale-105">Call</span>
+                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-popover px-3 py-1 text-xs text-popover-foreground opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+                  +1 (555) 123-4567
+                </span>
+              </a>
+
+              {/* Live Chat */}
+              <button 
+                className="group relative flex flex-col items-center gap-2"
+                onClick={() => alert('Live chat coming soon!')}
+              >
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 glow-hover icon-bounce-hover">
+                  <MessageCircle className="h-7 w-7 text-primary transition-colors group-hover:text-primary-foreground" />
+                </div>
+                <span className="text-xs font-medium text-muted-foreground transition-all duration-300 group-hover:text-foreground group-hover:scale-105">Chat</span>
+                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-popover px-3 py-1 text-xs text-popover-foreground opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+                  Available 24/7
+                </span>
+              </button>
             </div>
 
-            <div className="flex flex-col items-center rounded-lg border border-border bg-card p-6 text-center shadow-card transition-all hover:shadow-card-hover">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                <Phone className="h-6 w-6 text-primary" />
+            {/* Social Media Icons */}
+            <div className="flex items-center gap-4">
+              <span className="text-xs text-muted-foreground">Follow us:</span>
+              <div className="flex gap-3">
+                <a 
+                  href="https://twitter.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group relative"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted/50 transition-all duration-300 group-hover:bg-[#1DA1F2] group-hover:scale-110 icon-bounce-hover">
+                    <Twitter className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-white" />
+                  </div>
+                  <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-popover px-2 py-1 text-xs text-popover-foreground opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+                    Twitter
+                  </span>
+                </a>
+                
+                <a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group relative"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted/50 transition-all duration-300 group-hover:bg-[#0A66C2] group-hover:scale-110 icon-bounce-hover">
+                    <Linkedin className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-white" />
+                  </div>
+                  <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-popover px-2 py-1 text-xs text-popover-foreground opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+                    LinkedIn
+                  </span>
+                </a>
+                
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group relative"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted/50 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-[#833AB4] group-hover:via-[#FD1D1D] group-hover:to-[#F77737] group-hover:scale-110 icon-bounce-hover">
+                    <Instagram className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-white" />
+                  </div>
+                  <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-popover px-2 py-1 text-xs text-popover-foreground opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+                    Instagram
+                  </span>
+                </a>
+                
+                <a 
+                  href="https://facebook.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group relative"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted/50 transition-all duration-300 group-hover:bg-[#1877F2] group-hover:scale-110 icon-bounce-hover">
+                    <Facebook className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-white" />
+                  </div>
+                  <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-popover px-2 py-1 text-xs text-popover-foreground opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+                    Facebook
+                  </span>
+                </a>
               </div>
-              <h3 className="mb-2 font-semibold text-foreground">Call Us</h3>
-              <p className="text-sm text-muted-foreground">+1 (555) 123-4567</p>
-            </div>
-
-            <div className="flex flex-col items-center rounded-lg border border-border bg-card p-6 text-center shadow-card transition-all hover:shadow-card-hover">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                <MessageCircle className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="mb-2 font-semibold text-foreground">Live Chat</h3>
-              <p className="text-sm text-muted-foreground">Available 24/7</p>
             </div>
           </div>
 
