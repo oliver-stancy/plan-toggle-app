@@ -21,7 +21,7 @@ const PricingCard = ({
 }: PricingCardProps) => {
   return (
     <Card
-      className="group relative overflow-hidden border-border bg-card p-5 shadow-card transition-all duration-300 hover:shadow-card-hover animate-fade-in"
+      className="group relative overflow-hidden border-border bg-card p-5 shadow-card transition-all duration-300 hover:shadow-card-hover hover:scale-105 hover:-translate-y-1 animate-fade-in"
       style={{ animationDelay: `${delay}s` }}
     >
       {/* Gradient Background */}
